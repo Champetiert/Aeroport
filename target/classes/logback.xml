@@ -1,0 +1,80 @@
+<configuration>
+
+	<appender class="ch.qos.logback.core.ConsoleAppender"
+		name="consoleAppender">
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n
+			</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+	</appender>
+
+	<appender
+		class="ch.qos.logback.core.rolling.RollingFileAppender"
+		name="daoAppender">
+		<!-- <File>rest-demo.log</File> -->
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>dao.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n
+			</Pattern>
+		</encoder>
+	</appender>
+	
+	<appender
+		class="ch.qos.logback.core.rolling.RollingFileAppender"
+		name="mainAppender">
+		<!-- <File>rest-demo.log</File> -->
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>main.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n
+			</Pattern>
+		</encoder>
+	</appender>
+
+
+	<logger name="dao" additivity="false">
+
+		<level value="INFO" />
+
+		<appender-ref ref="daoAppender" />
+
+
+		<appender-ref ref="consoleAppender" />
+
+	</logger>
+	
+	<logger name="main" additivity="false">
+
+		<level value="INFO" />
+
+		<appender-ref ref="mainAppender" />
+
+
+		<appender-ref ref="consoleAppender" />
+
+	</logger>
+
+
+	<root>
+
+		<level value="INFO" />
+
+		<appender-ref ref="consoleAppender" />
+
+	</root>
+
+</configuration>

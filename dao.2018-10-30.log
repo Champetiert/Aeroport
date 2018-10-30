@@ -1,0 +1,5 @@
+16:37:53.145 [main] INFO  dao.GenericDAO - find 
+16:41:19.974 [main] INFO  dao.GenericDAO - find : model.Vol 
+16:45:53.782 [main] INFO  dao.GenericDAO - find : model.Vol 
+16:47:08.704 [main] INFO  dao.GenericDAO - find : model.Vol 
+16:56:43.000 [main] INFO  dao.GenericDAO - find : model.Vol 

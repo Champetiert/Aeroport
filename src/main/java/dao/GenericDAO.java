@@ -4,17 +4,24 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
-public class GenericDAO<T> {
+
+public class GenericDAO<T> { 
 
 	private Class<T> klass;
+	
+	private final Logger logger;
 
 	public GenericDAO(Class<T> klass) {
 		this.klass = klass;
+		this.logger = LoggerFactory.getLogger(GenericDAO.class);
 	}
 
 	public T find(long l) {
+		this.logger.info("find : {}", klass.getName());
 		EntityManager em = DatabaseHelper.createEntityManager();
 		T findClient = em.find(klass, l);
 		return findClient;
